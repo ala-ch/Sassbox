@@ -5,7 +5,7 @@ Sassbox is a collection of our favourite Sass snippets.
 
 ## Installation
 
-`bower install --save-dev rekomat/Sassbox`
+`bower install --save rekomat/Sassbox`
 
 
 ## Contributors
