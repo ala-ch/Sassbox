@@ -16,6 +16,7 @@ module.exports = function(grunt) {
     cssBuildPath: 'demo/styles',
     sassboxPath: 'src/sassbox',
     sassdocPath: 'docs',
+    sassboxFile: 'sassbox.scss',
 
     // watch: plugin config
     watch: {
@@ -35,10 +36,19 @@ module.exports = function(grunt) {
     
     // clean: plugin config
     clean: {
-      client: {
+      demo: {
         src: [
-          '<%= buildPath %>',
+          '<%= buildPath %>'
+        ]
+      },
+      docs: {
+        src: [
           '<%= sassdocPath %>'
+        ]
+      },
+      dist: {
+        src: [
+          '<%= sassboxFile %>'
         ]
       }
     },
@@ -75,6 +85,21 @@ module.exports = function(grunt) {
       }
     }, 
     
+    // concat: plugin config
+    concat: {
+      sassbox: {
+        options: {
+          banner: '// <%= pkg.name %> <%= pkg.version %> \n' +
+                  '// <%= pkg.repository.url %>\n' +
+                  '// (c) 2015, <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> <<%= pkg.author.url %>>\n' + 
+                  '// <%= pkg.license %>\n' + 
+                  '// <%= grunt.template.today("dd.mm.yyyy hh:mm") %>\n\n'
+        },
+        src: ['<%= sassboxPath %>/{,*/}_*.scss'],
+        dest: '<%= sassboxFile %>'
+      }
+    },
+    
     // sassdoc: plugin config
     sassdoc: {
       default: {
@@ -89,8 +114,25 @@ module.exports = function(grunt) {
   });
 
   // register tasks
-  grunt.registerTask('default', [
-    'clean', 
+  grunt.registerTask('default', 'clean-build of dist, docs and demo project', [
+    'clean',
+    'concat:sassbox',
+    'jade', 
+    'sass', 
+    'sassdoc'
+  ]);
+  
+  grunt.registerTask('dist', 'build the dist file', [
+    'concat:sassbox'
+  ]);
+
+  grunt.registerTask('docs', 'build the docs (alias for task sassdoc)', [
+    'clean:docs',
+    'sassdoc'
+  ]);
+
+  grunt.registerTask('demo', 'build the demo project', [
+    'clean:demo',
     'jade', 
     'sass'
   ]);

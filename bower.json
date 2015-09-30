@@ -9,7 +9,7 @@
       }
   ],
   "description": "Sassbox is a collection of our favourite Sass snippets.",
-  "main": "src/sassbox/sassbox.scss",
+  "main": "sassbox.scss",
   "moduleType": [],
   "keywords": [
     "Sass",
@@ -23,6 +23,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
+    "src",
     "demo",
     "test",
     "tests", 
