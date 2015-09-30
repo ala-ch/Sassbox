@@ -93,7 +93,7 @@ module.exports = function(grunt) {
                   '// <%= pkg.repository.url %>\n' +
                   '// (c) 2015, <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> <<%= pkg.author.url %>>\n' + 
                   '// <%= pkg.license %>\n' + 
-                  '// <%= grunt.template.today("dd.mm.yyyy hh:mm") %>\n\n'
+                  '// <%= grunt.template.today("dd.mm.yyyy HH:mm") %>\n\n'
         },
         src: ['<%= sassboxPath %>/{,*/}_*.scss'],
         dest: '<%= sassboxFile %>'
