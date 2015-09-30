@@ -1,0 +1,17 @@
+@import '../sassbox/type';
+
+.type.font-smoothing.default {
+  @include font-smoothing();
+}
+
+.type.font-smoothing.sharp {
+  @include font-smoothing(sharp);
+}
+
+.type.font-smoothing.none {
+  @include font-smoothing(none);
+}
+
+.type.font-smoothing.strong {
+  @include font-smoothing(strong);
+}

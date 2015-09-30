@@ -1,0 +1,43 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Sassbox Demo
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    //-link(rel='shortcut icon', href='/favicon.ico')
+    //-link(rel='apple-touch-icon', href='/apple-touch-icon.png')
+    // Place favicon.ico and apple-touch-icon.png in the root directory
+    // build:css styles/vendor.css
+    // endbuild
+    // build:css styles/main.css
+    link(rel='stylesheet', href='styles/main.css')
+    link(rel='stylesheet', href='styles/examples.css')
+    link(rel='stylesheet', href='styles/type.css')
+    // endbuild
+  body
+    <!--[if lt IE 9]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    h1 Hello Sassbox
+    
+    h2 Type
+    
+    h3 font-smoothing()
+    
+    .example
+      p.type.font-smoothing.default font-smoothing()
+      p.type.font-smoothing.strong font-smoothing(strong)
+      p.type.font-smoothing.sharp font-smoothing(sharp)
+      p.type.font-smoothing.none font-smoothing(none)
+
+    .example.inverse
+      p.type.font-smoothing.default font-smoothing()
+      p.type.font-smoothing.strong font-smoothing(strong)
+      p.type.font-smoothing.sharp font-smoothing(sharp)
+      p.type.font-smoothing.none font-smoothing(none)
+
+    // build:js scripts/main.js
+    //-script(src='scripts/main.js')
+    // endbuild

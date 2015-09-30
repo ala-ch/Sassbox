@@ -2,16 +2,20 @@
   "name": "Sassbox",
   "homepage": "https://github.com/rekomat/Sassbox",
   "authors": [
-    "Rene Keller <rek@ala.ch>"
+      {
+        "name": "ala pixel LLC", 
+        "email": "inbox@ala.ch", 
+        "homepage": "http://ala.ch"
+      }
   ],
-  "description": "Our little Sass toolbox",
-  "main": "src/sassbox.scss",
+  "description": "Sassbox is a collection of our favourite Sass snippets.",
+  "main": "src/sassbox/sassbox.scss",
   "moduleType": [],
   "keywords": [
     "Sass",
-    "Style",
     "Toolbox",
-    "Snippets"
+    "Snippets",
+    "Collection"
   ],
   "license": "GPL",
   "private": true,
@@ -19,7 +23,9 @@
     "**/.*",
     "node_modules",
     "bower_components",
+    "demo",
     "test",
-    "tests"
+    "tests", 
+    "Gruntfile.js"
   ]
 }
