@@ -1,4 +1,4 @@
-// _type.scss
+// _typography.scss
 //
 // useful Sass snippets when dealing with type
 
@@ -32,15 +32,13 @@ $default-font-smoothing: 'sharp' !default;
 
 @mixin font-smoothing($font-smoothing: $default-font-smoothing)
 {
-    @if $font-smoothing == sharp {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    } @else if $font-smoothing == none {
-        -webkit-font-smoothing: none;
-    } @else {
-        -webkit-font-smoothing: subpixel-antialiased;
-        -moz-osx-font-smoothing: auto;
-    }
+  @if $font-smoothing == sharp {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else if $font-smoothing == none {
+    -webkit-font-smoothing: none;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
 }
-
-

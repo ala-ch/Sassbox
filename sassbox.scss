@@ -1,8 +1,8 @@
 // sassbox 0.0.1 
-// https://github.com/rekomat/Sassbox.git
+// https://github.com/ala-pixel-llc/Sassbox.git
 // (c) 2015, 2015 ala pixel LLC <http://ala.ch>
 // GPL-3.0
-// 30.09.2015 22:09
+// 01.10.2015 12:10
 
 // _type.scss
 //
@@ -38,15 +38,13 @@ $default-font-smoothing: 'sharp' !default;
 
 @mixin font-smoothing($font-smoothing: $default-font-smoothing)
 {
-    @if $font-smoothing == sharp {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    } @else if $font-smoothing == none {
-        -webkit-font-smoothing: none;
-    } @else {
-        -webkit-font-smoothing: subpixel-antialiased;
-        -moz-osx-font-smoothing: auto;
-    }
+  @if $font-smoothing == sharp {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else if $font-smoothing == none {
+    -webkit-font-smoothing: none;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
 }
-
-
