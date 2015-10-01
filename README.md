@@ -6,7 +6,7 @@ Sassbox is a collection of our favourite Sass snippets.
 
 ## Installation
 
-`bower install --save rekomat/Sassbox`
+`bower install --save ala-pixel-llc/Sassbox` or download and import `/sassbox.scss` in your Sass files. 
 
 
 
@@ -49,5 +49,13 @@ s. `/docs`
 `$ grunt bump --setversion=2.0.3` set version 
 
 `$ grunt bump --dry-run` just try. No changes, stages, commits or pushes. 
+
+Bump version, update dist and docs, commit: 
+
+```
+$ grunt bump-only:minor
+$ grunt 
+$ grunt bump-commit
+```
 
 

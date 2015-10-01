@@ -1,7 +1,10 @@
 module.exports = function(grunt) {
 
   // dynamically load grunt plugins
-  require('jit-grunt')(grunt);
+  require('jit-grunt')(grunt, {
+    'bump-only': 'grunt-bump', 
+    'bump-commit': 'grunt-bump'
+  });
 
   // project configuration
   grunt.initConfig({
