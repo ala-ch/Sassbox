@@ -6,7 +6,7 @@ Sassbox is a collection of our favourite Sass snippets.
 
 ## Installation
 
-`bower install --save ala-pixel-llc/Sassbox` or download and import `/sassbox.scss` in your Sass files. 
+`bower install --save ala-ch/Sassbox` or download and import `/sassbox.scss` in your Sass files. 
 
 
 
