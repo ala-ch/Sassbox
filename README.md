@@ -55,6 +55,7 @@ Bump version, update dist and docs, commit:
 ```
 $ grunt bump-only:minor
 $ grunt 
+$ git commit
 $ grunt bump-commit
 ```
 
