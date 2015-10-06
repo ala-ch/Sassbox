@@ -1,8 +1,8 @@
-// sassbox 0.0.5 
+// sassbox 0.0.6 
 // https://github.com/ala-ch/Sassbox.git
 // (c) 2015, 2015 ala pixel LLC <http://ala.ch>
 // GPL-3.0
-// 06.10.2015 09:39
+// 06.10.2015 17:42
 
 // _helpers.scss
 //
@@ -25,6 +25,56 @@ $default-base-font-size: 16px !default;
 @function px2em($val, $base: $default-base-font-size)
 {
   @return ($val / $base) * 1em;
+}
+
+// _images.scss
+//
+// Generic helpers and tools for dealing with images and background-images
+// IMPORTANT: Do not output any CSS in this file
+
+
+// --- SVG Fallback
+
+/// Default fallback type (suffix without leading dot). 
+///
+/// @see {mixin} svg-fallback
+$default-svg-fallback: 'png' !default;
+
+/// Default position for background-image added with mixin svg-fallback. 
+///
+/// @see {mixin} svg-fallback
+$default-svg-bg-position: 50% 50% !default;
+
+/// Default background-repeat for background-image added with mixin svg-fallback. 
+///
+/// @see {mixin} svg-fallback
+$default-svg-repeat: no-repeat !default;
+
+/// Returns declarations for a SVG background image with fallback.
+///
+/// @param {string} $svg - path and name of the image without suffix, ie '/images/logo'
+/// @param {string} $fb [png] - type of the fallback
+/// @param {length} $width [auto] - background-width
+/// @param {length} $height [auto] - background-height
+/// @param {length} $position [50% 50%] - background-position
+/// @param {string} $repeat [no-repeat] - background-repeat
+///
+/// @see {variable} $default-svg-fallback
+/// @see {variable} $default-svg-bg-position
+/// @see {variable} $default-svg-repeat
+@mixin svg-fallback(
+  $svg,
+  $fb: $default-svg-fallback,
+  $width: auto,
+  $height: auto,
+  $position: $default-svg-bg-position,
+  $repeat: $default-svg-repeat
+) {
+  background-image: url('#{$svg}.#{$fb}');
+  background-image: url('#{$svg}.svg');
+  background-size: $width $height;
+  background-position: $position;
+  background-repeat: $repeat;
 }
 
 // _responsive-typography.scss

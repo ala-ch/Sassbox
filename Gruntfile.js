@@ -56,6 +56,21 @@ module.exports = function(grunt) {
       }
     },
 
+    // copy: plugin configuration
+    copy: {
+      demo: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= srcPath %>',
+          dest: '<%= buildPath %>',
+          src: [
+            'images/{,*/}*.{gif,jpg,png,svg,webp}'
+          ]
+        }]
+      }
+    },
+
     // jade: plugin config
     jade: {
       base: {
@@ -139,6 +154,7 @@ module.exports = function(grunt) {
   // register tasks
   grunt.registerTask('default', 'clean-build of dist, docs and demo project', [
     'clean',
+    'copy', 
     'concat:sassbox',
     'jade', 
     'sass', 
@@ -156,6 +172,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('demo', 'build the demo project', [
     'clean:demo',
+    'copy',
     'jade', 
     'sass'
   ]);
