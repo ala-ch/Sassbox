@@ -13,13 +13,13 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'), 
 
     // paths
-    srcPath: 'src',
+    srcPath: 'src/demo',
     buildPath: 'demo', 
-    sassSrcPath: 'src/styles',
+    sassSrcPath: 'src/demo/styles',
     cssBuildPath: 'demo/styles',
-    sassboxPath: 'src/sassbox',
+    sassboxPath: 'src/sassbox/modules',
     sassdocPath: 'docs',
-    sassboxFile: 'sassbox.scss',
+    sassboxFile: '_sassbox.scss',
 
     // watch: plugin config
     watch: {

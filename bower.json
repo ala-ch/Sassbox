@@ -9,7 +9,7 @@
       }
   ],
   "description": "Sassbox is a collection of our favourite Sass snippets.",
-  "main": "sassbox.scss",
+  "main": "_sassbox.scss",
   "moduleType": [],
   "keywords": [
     "Sass",

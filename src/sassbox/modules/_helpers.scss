@@ -1,0 +1,22 @@
+// _helpers.scss
+//
+// Generic helpers and tools such as converters, calculaters etc.
+// IMPORTANT: Do not output any CSS in this file
+
+
+/// Default font size in pixel (browser context)
+
+$default-base-font-size: 16px !default;
+
+
+/// Convert pixel -> em
+///
+/// @param {length} $val - a font size in px
+/// @param {length} $base [$default-base-font-size] - the base font size (browser context) 
+///
+/// @see {variable} $default-base-font-size
+
+@function px2em($val, $base: $default-base-font-size)
+{
+  @return ($val / $base) * 1em;
+}

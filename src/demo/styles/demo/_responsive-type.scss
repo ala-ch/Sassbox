@@ -1,0 +1,107 @@
+
+// --- Responsive typography relies on your breakpoint setup and requires a breakpoint 
+// manager. The following code 'simulates' a simple breakpoint/RWD setup. 
+
+// your breakpoints
+$bps: (
+  's':  600px,
+  'm':  800px,
+  'l': 1000px,
+);
+
+// a super simple dummy break point manager
+// checkout https://github.com/sass-mq/sass-mq if you're looking for a wonderful bpm
+// IMPORTANT: As Sass does not support mixin interpolation yet, your breakpoint mixin 
+// must be named 'mq' or you'll have to write your own implementation of the mixin 
+// font-size. 
+@mixin mq($bp) 
+{
+  @if (map-has-key($bps, $bp)) {
+    @each $key, $width in $bps {
+      @if ($bp == $key) {
+        @media (min-width: px2em($width)) {
+            @content;
+        }
+      }
+    }
+  } @else {
+    @warn 'breakpoint #{$bp} not found in $bps';
+  }
+}
+
+
+// Responsive typography setup
+
+// assign your breakpoints to be used as 'typographic breakpoints' or define a separate
+// list. 
+$type-breakpoints: $bps;
+
+// declare all the font sizes etc. you'll be using in your site
+$font-sizes: (
+  'default': (
+    'milli': (
+      'font-size': px2em(10, 16),
+      'line-height': px2em(16, 10),
+    ),
+    'centi': (
+      'font-size': px2em(12, 16),
+      'line-height': px2em(18, 12),
+    ),
+    'deci': (
+      'font-size': px2em(16, 16),
+      'line-height': px2em(22, 16),
+    ),
+    'uno': (
+      'font-size': px2em(20, 16),
+      'line-height': px2em(26, 20),
+    ),
+    'deca': (
+      'font-size': px2em(24, 16),
+      'line-height': px2em(30, 24),
+    ),
+    'hecto': (
+      'font-size': px2em(28, 16),
+      'line-height': px2em(34, 28),
+    ),
+  ),
+);
+
+
+// translation map for responsive font sizes. 
+// 'default' represents 'mobile first' (no matching media query)
+$font-scale-map: (
+  'default': (
+    'deci': (
+      'default': 'milli',
+      's': 'centi',
+      'm': 'deci',
+      'l': 'uno',
+    ),
+    'uno': (
+      'default': 'centi',
+      's': 'deci',
+      'm': 'uno',
+      'l': 'deca',
+    ),
+    'deca': (
+      'default': 'deci',
+      's': 'uno',
+      'm': 'deca',
+      'l': 'hecto',
+    ),
+  ),
+);
+
+
+
+.responsive-typography.deci {
+  @include font-size(deci);
+}
+
+.responsive-typography.uno {
+  @include font-size(uno);
+}
+
+.responsive-typography.deca {
+  @include font-size(deca);
+}

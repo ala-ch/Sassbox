@@ -12,8 +12,6 @@ html(lang='en')
     // endbuild
     // build:css styles/main.css
     link(rel='stylesheet', href='styles/main.css')
-    link(rel='stylesheet', href='styles/examples.css')
-    link(rel='stylesheet', href='styles/sassbox.css')
     // endbuild
   body
     <!--[if lt IE 9]>
@@ -22,21 +20,31 @@ html(lang='en')
 
     h1 Hello Sassbox
     
-    h2 Type
+
+    h2 Typography
     
     h3 font-smoothing()
     
     .example
-      p.type.font-smoothing.default font-smoothing()
-      p.type.font-smoothing.strong font-smoothing(strong)
-      p.type.font-smoothing.sharp font-smoothing(sharp)
-      p.type.font-smoothing.none font-smoothing(none)
+      p.typography.font-smoothing.default font-smoothing()
+      p.typography.font-smoothing.strong font-smoothing(strong)
+      p.typography.font-smoothing.sharp font-smoothing(sharp)
+      p.typography.font-smoothing.none font-smoothing(none)
 
     .example.inverse
-      p.type.font-smoothing.default font-smoothing()
-      p.type.font-smoothing.strong font-smoothing(strong)
-      p.type.font-smoothing.sharp font-smoothing(sharp)
-      p.type.font-smoothing.none font-smoothing(none)
+      p.typography.font-smoothing.default font-smoothing()
+      p.typography.font-smoothing.strong font-smoothing(strong)
+      p.typography.font-smoothing.sharp font-smoothing(sharp)
+      p.typography.font-smoothing.none font-smoothing(none)
+    
+    
+    h2 Responsive typography
+    
+    .example
+      p Resize the viewport!
+      p.responsive-typography.deci font-size(deci)
+      p.responsive-typography.uno font-size(uno)
+      p.responsive-typography.deca font-size(deca)
 
     // build:js scripts/main.js
     //-script(src='scripts/main.js')

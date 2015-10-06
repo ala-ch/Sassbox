@@ -1,5 +1,5 @@
 node_modules
 .sass-cache
-demo
+/demo/
 .DS_Store
 
