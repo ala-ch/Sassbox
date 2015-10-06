@@ -1,8 +1,8 @@
-// sassbox 0.1.0 
+// sassbox 0.1.1 
 // https://github.com/ala-ch/Sassbox.git
 // (c) 2015, 2015 ala pixel LLC <http://ala.ch>
 // GPL-3.0
-// 06.10.2015 19:39
+// 06.10.2015 20:12
 
 // _helpers.scss
 //
@@ -31,7 +31,7 @@ $default-base-font-size: 16px !default;
 
 /// The default prefixes to return 
 ///
-/// @see {mixin} prefix
+/// @see {mixin} sb-prefix
 $default-prefixes: ('webkit', 'moz', 'ms', 'o');
 
 /// Returns the prefixed declarations for a given property and value. Pass a list of 
@@ -39,7 +39,7 @@ $default-prefixes: ('webkit', 'moz', 'ms', 'o');
 /// prefixed properties the mixin will always return the un-prefixed declaration.
 ///
 /// @see {variable} $default-prefixes
-@mixin prefix($property, $value, $prefixes: $default-prefixes)
+@mixin sb-prefix($property, $value, $prefixes: $default-prefixes)
 {
   @each $prefix in $prefixes {
     -#{$prefix}-#{$property}: $value;
@@ -51,10 +51,11 @@ $default-prefixes: ('webkit', 'moz', 'ms', 'o');
 // --- Layout macros
 
 /// Removes the browser-default button styles from button elements. 
-@mixin un-button {
+@mixin un-button 
+{
     border: 0;
     outline: none;
-    @include prefix(appearance, none, ('webkit', 'moz'));
+    @include sb-prefix(appearance, none, ('webkit', 'moz'));
 }
 
 /// Hides the overlay of an element and offsets it's content. 
@@ -62,7 +63,8 @@ $default-prefixes: ('webkit', 'moz', 'ms', 'o');
 /// Same as Compass {mixin} `replace-text` but without adding a background image.
 /// Comes in handy when dealing with a group of buttons with same style but different
 /// background images.
-@mixin offset-text {
+@mixin offset-text 
+{
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
