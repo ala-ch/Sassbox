@@ -4,5 +4,5 @@
   height: 48px;
   background-color: white;
   border-radius: 50%;
-  @include svg-fallback('../images/icon-000', 'gif', 28px, 28px);
+  @include svg-fallback('../images/icon-000', 'gif', 28px 28px);
 }

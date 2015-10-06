@@ -1,8 +1,8 @@
-// sassbox 0.0.6 
+// sassbox 0.1.0 
 // https://github.com/ala-ch/Sassbox.git
 // (c) 2015, 2015 ala pixel LLC <http://ala.ch>
 // GPL-3.0
-// 06.10.2015 17:42
+// 06.10.2015 19:39
 
 // _helpers.scss
 //
@@ -10,10 +10,10 @@
 // IMPORTANT: Do not output any CSS in this file
 
 
+// --- Converters and Calculators
+
 /// Default font size in pixel (browser context)
-
 $default-base-font-size: 16px !default;
-
 
 /// Convert pixel -> em
 ///
@@ -21,10 +21,52 @@ $default-base-font-size: 16px !default;
 /// @param {length} $base [$default-base-font-size] - the base font size (browser context) 
 ///
 /// @see {variable} $default-base-font-size
-
 @function px2em($val, $base: $default-base-font-size)
 {
   @return ($val / $base) * 1em;
+}
+
+
+// --- CSS3/Prefixing
+
+/// The default prefixes to return 
+///
+/// @see {mixin} prefix
+$default-prefixes: ('webkit', 'moz', 'ms', 'o');
+
+/// Returns the prefixed declarations for a given property and value. Pass a list of 
+/// prefixes with argument $prefixes to fine-tune the returned declarations. Beside the 
+/// prefixed properties the mixin will always return the un-prefixed declaration.
+///
+/// @see {variable} $default-prefixes
+@mixin prefix($property, $value, $prefixes: $default-prefixes)
+{
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+  #{$property}: $value;
+}
+
+
+// --- Layout macros
+
+/// Removes the browser-default button styles from button elements. 
+@mixin un-button {
+    border: 0;
+    outline: none;
+    @include prefix(appearance, none, ('webkit', 'moz'));
+}
+
+/// Hides the overlay of an element and offsets it's content. 
+///
+/// Same as Compass {mixin} `replace-text` but without adding a background image.
+/// Comes in handy when dealing with a group of buttons with same style but different
+/// background images.
+@mixin offset-text {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  text-transform: capitalize;
 }
 
 // _images.scss
@@ -40,6 +82,11 @@ $default-base-font-size: 16px !default;
 /// @see {mixin} svg-fallback
 $default-svg-fallback: 'png' !default;
 
+/// Default fallback background size. 
+///
+/// @see {mixin} svg-fallback
+$default-svg-size: inherit inherit !default;
+
 /// Default position for background-image added with mixin svg-fallback. 
 ///
 /// @see {mixin} svg-fallback
@@ -54,25 +101,24 @@ $default-svg-repeat: no-repeat !default;
 ///
 /// @param {string} $svg - path and name of the image without suffix, ie '/images/logo'
 /// @param {string} $fb [png] - type of the fallback
-/// @param {length} $width [auto] - background-width
-/// @param {length} $height [auto] - background-height
-/// @param {length} $position [50% 50%] - background-position
+/// @param {string} $size [inherit inherit] - background-size
+/// @param {string} $position [50% 50%] - background-position
 /// @param {string} $repeat [no-repeat] - background-repeat
 ///
 /// @see {variable} $default-svg-fallback
+/// @see {variable} $default-svg-size
 /// @see {variable} $default-svg-bg-position
 /// @see {variable} $default-svg-repeat
 @mixin svg-fallback(
   $svg,
   $fb: $default-svg-fallback,
-  $width: auto,
-  $height: auto,
+  $size: $default-svg-size,
   $position: $default-svg-bg-position,
   $repeat: $default-svg-repeat
 ) {
   background-image: url('#{$svg}.#{$fb}');
   background-image: url('#{$svg}.svg');
-  background-size: $width $height;
+  background-size: $size;
   background-position: $position;
   background-repeat: $repeat;
 }

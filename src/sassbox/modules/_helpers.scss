@@ -4,10 +4,10 @@
 // IMPORTANT: Do not output any CSS in this file
 
 
+// --- Converters and Calculators
+
 /// Default font size in pixel (browser context)
-
 $default-base-font-size: 16px !default;
-
 
 /// Convert pixel -> em
 ///
@@ -15,8 +15,50 @@ $default-base-font-size: 16px !default;
 /// @param {length} $base [$default-base-font-size] - the base font size (browser context) 
 ///
 /// @see {variable} $default-base-font-size
-
 @function px2em($val, $base: $default-base-font-size)
 {
   @return ($val / $base) * 1em;
+}
+
+
+// --- CSS3/Prefixing
+
+/// The default prefixes to return 
+///
+/// @see {mixin} prefix
+$default-prefixes: ('webkit', 'moz', 'ms', 'o');
+
+/// Returns the prefixed declarations for a given property and value. Pass a list of 
+/// prefixes with argument $prefixes to fine-tune the returned declarations. Beside the 
+/// prefixed properties the mixin will always return the un-prefixed declaration.
+///
+/// @see {variable} $default-prefixes
+@mixin prefix($property, $value, $prefixes: $default-prefixes)
+{
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+  #{$property}: $value;
+}
+
+
+// --- Layout macros
+
+/// Removes the browser-default button styles from button elements. 
+@mixin un-button {
+    border: 0;
+    outline: none;
+    @include prefix(appearance, none, ('webkit', 'moz'));
+}
+
+/// Hides the overlay of an element and offsets it's content. 
+///
+/// Same as Compass {mixin} `replace-text` but without adding a background image.
+/// Comes in handy when dealing with a group of buttons with same style but different
+/// background images.
+@mixin offset-text {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  text-transform: capitalize;
 }
