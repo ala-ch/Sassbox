@@ -60,9 +60,9 @@ $sb-font-scale-map: (
 
 /// Returns the font-scale keyword for a given font-scale (in layout) and breakpoint.
 ///
-/// @param {string} $scale - any of the keys in $sb-font-scale-map
-/// @param {sting} $bp - any of the breakpoints declared in $sb-font-scale-map
-/// @param {string} $font-set [$sb-default-font-set] - any of the font-sets declared in $sb-font-scale-map
+/// @param {string} $scale - any of the keys in `$sb-font-scale-map`
+/// @param {sting} $bp - any of the breakpoints declared in `$sb-font-scale-map`
+/// @param {string} $font-set [$sb-default-font-set] - any of the font-sets declared in `$sb-font-scale-map`
 ///
 /// @see {variable} $sb-default-font-set
 /// @see {mixin} sb-font-size
@@ -89,9 +89,9 @@ $sb-font-scale-map: (
 /// and a given breakpoint. Typically you should use the mixin `sb-font-size` in your 
 /// stylesheet (returns media queries for all defined breakpoints). 
 ///
-/// @param {string} $scale - any of the keys in $sb-font-scale-map
-/// @param {string} $bp - any of the breakpoints declared in $sb-font-scale-map
-/// @param {string} $font-set [$sb-default-font-set] - anyo of the font-sets declared in $sb-font-scale-map
+/// @param {string} $scale - any of the keys in `$sb-font-scale-map`
+/// @param {string} $bp - any of the breakpoints declared in `$sb-font-scale-map`
+/// @param {string} $font-set [$sb-default-font-set] - anyo of the font-sets declared in `$sb-font-scale-map`
 ///
 /// @see {variable} $sb-default-font-set
 /// @see {mixin} sb-font-size
@@ -110,23 +110,34 @@ $sb-font-scale-map: (
 /// original layout. The mixin will then return an adequate font size for the current
 /// viewport.
 ///
+/// Use parameter `$responsive: false` to ignore 'responsive' type but receive the
+/// original values of a given scale. This might be useful in some cases where you want
+/// to use the original `font-size` etc. regardless of the current viewport/breakpoint.
+///
 /// NOTE: As Sass does not support mixin interpolation yet your breakpoint mixin must
 /// use the name 'mq'. s. https://github.com/sass/sass/issues/626
-/// If your breakpoint mixin uses another name: 
+/// If your breakpoint mixin uses another name:
 /// a) rename it
-/// c) write your own implementation of the sb-font-size mixin
+/// c) write your own implementation of this font-size mixin
 ///
-/// @param {string} $scale - any of the keys in $sb-font-scale-map
-/// @param {string} $font-set [$sb-default-font-set] - any of the font-sets declared in $sb-font-scale-map
+/// @param {string} $scale - any of the keys in `$sb-font-scale-map`
+/// @param {bool} $responsive [true] - set false to force the original scale regardless of the breakpoint/viewport
+/// @param {string} $font-set [$sb-default-font-set] - any of the font-sets declared in `$sb-font-scale-map`
 
-@mixin sb-font-size($scale: $sb-default-font-scale, $font-set: $sb-default-font-set)
+@mixin sb-font-size($scale: $sb-default-font-scale, $responsive: true, $font-set: $sb-default-font-set)
 {
-  // default size (mobile first)
-  @include sb-font-declarations($scale, 'default', $font-set);
-  // NOTE: requires breakpoints to be ordered ASC (mobile first)
-  @each $name, $size in $sb-type-breakpoints {
-    @include mq(#{$name}) {
-      @include sb-font-declarations($scale, #{$name}, $font-set);
+  @if ($responsive) {
+    // default size (mobile first)
+    @include sb-font-declarations($scale, 'default', $font-set);
+    // NOTE: requires breakpoints to be ordered ASC (mobile first)
+    @each $name, $size in $sb-type-breakpoints {
+      @include mq(#{$name}) {
+        @include sb-font-declarations($scale, #{$name}, $font-set);
+      }
+    }
+  } @else {
+    @each $property, $value in map-get(map-get($sb-font-sizes, $font-set), $scale) {
+      #{$property}: #{$value};
     }
   }
 }
