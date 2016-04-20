@@ -18,7 +18,7 @@ $sb-type-breakpoints: () !default;
 $sb-default-font-set: 'default' !default;
 
 
-/// Default font scale used in mixin font-size
+/// Default font scale used in mixin sb-font-size
 ///
 /// @see sb-font-size
 
@@ -86,7 +86,7 @@ $sb-font-scale-map: (
 
 
 /// Returns the adequate CSS properties defined in `$sb-font-sizes` for a given font-scale 
-/// and a given breakpoint. Typically you should use the mixin `font-size` in your 
+/// and a given breakpoint. Typically you should use the mixin `sb-font-size` in your 
 /// stylesheet (returns media queries for all defined breakpoints). 
 ///
 /// @param {string} $scale - any of the keys in $sb-font-scale-map
@@ -114,7 +114,7 @@ $sb-font-scale-map: (
 /// use the name 'mq'. s. https://github.com/sass/sass/issues/626
 /// If your breakpoint mixin uses another name: 
 /// a) rename it
-/// c) write your own implementation of this font-size mixin
+/// c) write your own implementation of the sb-font-size mixin
 ///
 /// @param {string} $scale - any of the keys in $sb-font-scale-map
 /// @param {string} $font-set [$sb-default-font-set] - any of the font-sets declared in $sb-font-scale-map
