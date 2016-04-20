@@ -1,11 +1,11 @@
 {
   "name": "sassbox",
   "version": "0.1.3",
-  "description": "Sassbox is a collection of our favourite Sass snippets.",
+  "description": "sassbox is a collection of our favourite Sass snippets.",
   "main": "_sassbox.scss",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ala-ch/Sassbox.git"
+    "url": "https://github.com/ala-ch/sassbox.git"
   },
   "keywords": [
     "Sass",
@@ -20,9 +20,9 @@
   },
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/ala-ch/Sassbox/issues"
+    "url": "https://github.com/ala-ch/sassbox/issues"
   },
-  "homepage": "https://github.com/ala-ch/Sassbox",
+  "homepage": "https://github.com/ala-ch/sassbox",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-bump": "^0.6.0",

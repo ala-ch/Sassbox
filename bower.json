@@ -1,6 +1,6 @@
 {
-  "name": "Sassbox",
-  "homepage": "https://github.com/ala-ch/Sassbox",
+  "name": "sassbox",
+  "homepage": "https://github.com/ala-ch/sassbox",
   "authors": [
       {
         "name": "ala pixel LLC", 
@@ -8,7 +8,7 @@
         "homepage": "http://ala.ch"
       }
   ],
-  "description": "Sassbox is a collection of our favourite Sass snippets.",
+  "description": "sassbox is a collection of our favourite Sass snippets.",
   "main": "_sassbox.scss",
   "moduleType": [],
   "keywords": [

@@ -1,12 +1,12 @@
-# Sassbox
+# sassbox
 
-Sassbox is a collection of our favourite Sass snippets. 
+sassbox is a collection of our favourite Sass snippets. 
 
 
 
 ## Installation
 
-`bower install --save ala-ch/Sassbox` or download and import `_sassbox.scss`. 
+`bower install --save ala-ch/sassbox` or download and import `_sassbox.scss`. 
 
 
 
