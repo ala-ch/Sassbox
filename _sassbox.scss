@@ -1,8 +1,8 @@
-// sassbox 0.1.1 
+// sassbox 0.1.2 
 // https://github.com/ala-ch/Sassbox.git
-// (c) 2015, 2015 ala pixel LLC <http://ala.ch>
+// (c) 2015 - 2016 ala pixel LLC <http://ala.ch>
 // GPL-3.0
-// 06.10.2015 20:12
+// 20.04.2016 11:08
 
 // _helpers.scss
 //
@@ -134,31 +134,31 @@ $default-svg-repeat: no-repeat !default;
 /// Default breakpoints for responsive typography. 
 /// Typically you just override this with your RWD breakpoint list. 
 
-$type-breakpoints: () !default;
+$sb-type-breakpoints: () !default;
 
 /// Default font-set (ie. 'sans', 'fontname'). Can be any of the keys you use in your 
-/// `$font-sizes` and `$font-scale-map`. Often you're good to go with just one font-set 
+/// `$sb-font-sizes` and `$sb-font-scale-map`. Often you're good to go with just one font-set 
 /// (ie. 'default'). Sometimes you need different font sizes (or other typographic 
 /// settings for different fonts used in the design. That's when to work with different
 /// font-sets (ie. ('sans', 'serif') or ('helvetica', 'georgia'). 
 
-$default-font-set: 'default' !default;
+$sb-default-font-set: 'default' !default;
 
 
 /// Default font scale used in mixin font-size
 ///
-/// @see font-size
+/// @see sb-font-size
 
-$default-font-scale: 'default' !default;
+$sb-default-font-scale: 'default' !default;
 
 
 /// Font sizes and line heights mapped by sets and scales.
 /// *NOTE:* Keys must be valid CSS properties, values must be valid CSS values.
 ///
-/// @see {variable} $default-font-set
+/// @see {variable} $sb-default-font-set
 /// @example -> /demo
 
-$font-sizes: (
+$sb-font-sizes: (
   'default': (
     'default': (
       'font-size': px2em(16, 16),
@@ -176,7 +176,7 @@ $font-sizes: (
 ///
 /// @example -> /demo
 
-$font-scale-map: (
+$sb-font-scale-map: (
   'default': (
     'default': (
       'default': 'default',
@@ -187,45 +187,45 @@ $font-scale-map: (
 
 /// Returns the font-scale keyword for a given font-scale (in layout) and breakpoint.
 ///
-/// @param {string} $scale - any of the keys in $font-scale-map
-/// @param {sting} $bp - any of the breakpoints declared in $font-scale-map
-/// @param {string} $font-set [$default-font-set] - any of the font-sets declared in $font-scale-map
+/// @param {string} $scale - any of the keys in $sb-font-scale-map
+/// @param {sting} $bp - any of the breakpoints declared in $sb-font-scale-map
+/// @param {string} $font-set [$sb-default-font-set] - any of the font-sets declared in $sb-font-scale-map
 ///
-/// @see {variable} $default-font-set
-/// @see {mixin} font-size
+/// @see {variable} $sb-default-font-set
+/// @see {mixin} sb-font-size
 
-@function font-scale($scale, $bp, $font-set: $default-font-set)
+@function sb-font-scale($scale, $bp, $font-set: $sb-default-font-set)
 {
-  @if map-has-key($font-scale-map, $font-set) {
-    @if map-has-key(map-get($font-scale-map, $font-set), $scale) {
-      @if map-has-key(map-get(map-get($font-scale-map, $font-set), $scale), $bp) {
-        @return map-get(map-get(map-get($font-scale-map, $font-set), $scale), $bp);
+  @if map-has-key($sb-font-scale-map, $font-set) {
+    @if map-has-key(map-get($sb-font-scale-map, $font-set), $scale) {
+      @if map-has-key(map-get(map-get($sb-font-scale-map, $font-set), $scale), $bp) {
+        @return map-get(map-get(map-get($sb-font-scale-map, $font-set), $scale), $bp);
       } @else {
-        @warn 'breakpoint #{$bp} not found in $font-scale-map.#{$font-set}.#{$scale}.'
+        @warn 'breakpoint #{$bp} not found in $sb-font-scale-map.#{$font-set}.#{$scale}.'
       }
     } @else {
-      @warn 'font-scale #{$scale} not found in $font-scale-map.#{$font-set}.';
+      @warn 'font-scale #{$scale} not found in $sb-font-scale-map.#{$font-set}.';
     }
   } @else {
-    @warn 'font-set #{$font-set} not found in $font-scale-map';
+    @warn 'font-set #{$font-set} not found in $sb-font-scale-map';
   }
 }
 
 
-/// Returns the adequate CSS properties defined in `$font-sizes` for a given font-scale 
+/// Returns the adequate CSS properties defined in `$sb-font-sizes` for a given font-scale 
 /// and a given breakpoint. Typically you should use the mixin `font-size` in your 
 /// stylesheet (returns media queries for all defined breakpoints). 
 ///
-/// @param {string} $scale - any of the keys in $font-scale-map
-/// @param {string} $bp - any of the breakpoints declared in $font-scale-map
-/// @param {string} $font-set [$default-font-set] - anyo of the font-sets declared in $font-scale-map
+/// @param {string} $scale - any of the keys in $sb-font-scale-map
+/// @param {string} $bp - any of the breakpoints declared in $sb-font-scale-map
+/// @param {string} $font-set [$sb-default-font-set] - anyo of the font-sets declared in $sb-font-scale-map
 ///
-/// @see {variable} $default-font-set
-/// @see {mixin} font-size
+/// @see {variable} $sb-default-font-set
+/// @see {mixin} sb-font-size
 
-@mixin font-declarations($scale, $bp, $font-set: $default-font-set)
+@mixin sb-font-declarations($scale, $bp, $font-set: $sb-default-font-set)
 {
-  @each $property, $value in map-get(map-get($font-sizes, $font-set), font-scale($scale, $bp, $font-set)) {
+  @each $property, $value in map-get(map-get($sb-font-sizes, $font-set), sb-font-scale($scale, $bp, $font-set)) {
     #{$property}: #{$value};
   }
 }
@@ -243,17 +243,17 @@ $font-scale-map: (
 /// a) rename it
 /// c) write your own implementation of this font-size mixin
 ///
-/// @param {string} $scale - any of the keys in $font-scale-map
-/// @param {string} $font-set [$default-font-set] - any of the font-sets declared in $font-scale-map
+/// @param {string} $scale - any of the keys in $sb-font-scale-map
+/// @param {string} $font-set [$sb-default-font-set] - any of the font-sets declared in $sb-font-scale-map
 
-@mixin font-size($scale: $default-font-scale, $font-set: $default-font-set)
+@mixin sb-font-size($scale: $sb-default-font-scale, $font-set: $sb-default-font-set)
 {
   // default size (mobile first)
-  @include font-declarations($scale, 'default', $font-set);
+  @include sb-font-declarations($scale, 'default', $font-set);
   // NOTE: requires breakpoints to be ordered ASC (mobile first)
-  @each $name, $size in $type-breakpoints {
+  @each $name, $size in $sb-type-breakpoints {
     @include mq(#{$name}) {
-      @include font-declarations($scale, #{$name}, $font-set);
+      @include sb-font-declarations($scale, #{$name}, $font-set);
     }
   }
 }

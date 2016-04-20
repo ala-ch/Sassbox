@@ -1,6 +1,6 @@
 {
   "name": "sassbox",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Sassbox is a collection of our favourite Sass snippets.",
   "main": "_sassbox.scss",
   "repository": {

@@ -34,10 +34,10 @@ $bps: (
 
 // assign your breakpoints to be used as 'typographic breakpoints' or define a separate
 // list. 
-$type-breakpoints: $bps;
+$sb-type-breakpoints: $bps;
 
 // declare all the font sizes etc. you'll be using in your site
-$font-sizes: (
+$sb-font-sizes: (
   'default': (
     'milli': (
       'font-size': px2em(10, 16),
@@ -69,7 +69,7 @@ $font-sizes: (
 
 // translation map for responsive font sizes. 
 // 'default' represents 'mobile first' (no matching media query)
-$font-scale-map: (
+$sb-font-scale-map: (
   'default': (
     'deci': (
       'default': 'milli',
@@ -95,13 +95,13 @@ $font-scale-map: (
 
 
 .responsive-typography.deci {
-  @include font-size(deci);
+  @include sb-font-size(deci);
 }
 
 .responsive-typography.uno {
-  @include font-size(uno);
+  @include sb-font-size(uno);
 }
 
 .responsive-typography.deca {
-  @include font-size(deca);
+  @include sb-font-size(deca);
 }
