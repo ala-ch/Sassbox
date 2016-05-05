@@ -92,14 +92,17 @@ $sb-font-scale-map: (
 /// @param {string} $scale - any of the keys in `$sb-font-scale-map`
 /// @param {string} $bp - any of the breakpoints declared in `$sb-font-scale-map`
 /// @param {string} $font-set [$sb-default-font-set] - anyo of the font-sets declared in `$sb-font-scale-map`
+/// @param {list} $properties [null] - a list of CSS properties to output. `null` returns all available properties. Pass ('font-size') if you do not need the line-height. 
 ///
 /// @see {variable} $sb-default-font-set
 /// @see {mixin} sb-font-size
 
-@mixin sb-font-declarations($scale, $bp, $font-set: $sb-default-font-set)
+@mixin sb-font-declarations($scale, $bp, $font-set: $sb-default-font-set, $properties: null)
 {
   @each $property, $value in map-get(map-get($sb-font-sizes, $font-set), sb-font-scale($scale, $bp, $font-set)) {
-    #{$property}: #{$value};
+    @if $properties == null or index($properties, $property) {
+      #{$property}: #{$value};
+    }
   }
 }
 
@@ -123,21 +126,24 @@ $sb-font-scale-map: (
 /// @param {string} $scale - any of the keys in `$sb-font-scale-map`
 /// @param {bool} $responsive [true] - set false to force the original scale regardless of the breakpoint/viewport
 /// @param {string} $font-set [$sb-default-font-set] - any of the font-sets declared in `$sb-font-scale-map`
+/// @param {list} $properties [null] - a list of CSS properties to output. `null` returns all available properties. Pass ('font-size') if you do not need the line-height. 
 
-@mixin sb-font-size($scale: $sb-default-font-scale, $responsive: true, $font-set: $sb-default-font-set)
+@mixin sb-font-size($scale: $sb-default-font-scale, $responsive: true, $font-set: $sb-default-font-set, $properties: null)
 {
   @if ($responsive) {
     // default size (mobile first)
-    @include sb-font-declarations($scale, 'default', $font-set);
+    @include sb-font-declarations($scale, 'default', $font-set, $properties);
     // NOTE: requires breakpoints to be ordered ASC (mobile first)
     @each $name, $size in $sb-type-breakpoints {
       @include mq(#{$name}) {
-        @include sb-font-declarations($scale, #{$name}, $font-set);
+        @include sb-font-declarations($scale, #{$name}, $font-set, $properties);
       }
     }
   } @else {
     @each $property, $value in map-get(map-get($sb-font-sizes, $font-set), $scale) {
-      #{$property}: #{$value};
+      @if $properties == null or index($properties, $property) {
+        #{$property}: #{$value};
+      }
     }
   }
 }
