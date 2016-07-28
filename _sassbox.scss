@@ -1,8 +1,8 @@
-// sassbox 0.1.4 
+// sassbox 0.1.5 
 // https://github.com/ala-ch/sassbox.git
 // (c) 2015 - 2016 ala pixel LLC <http://ala.ch>
 // GPL-3.0
-// 05.05.2016 20:35
+// 28.07.2016 12:44
 
 // _helpers.scss
 //
@@ -168,11 +168,14 @@ $sb-font-sizes: (
 ) !default;
 
 
-/// Translation map for responsive font sizes mapped by sets, scales and breakpoints. 
+/// Translation map for responsive font sizes mapped by sets, scales and breakpoints.
 ///
-/// This map declares what font scales to apply for a given font scale at a given 
-/// breakpoint. Remember to add a scale named 'default' for every set. It is used if 
-/// none of the media queries matches (mobile first). 
+/// This map declares what font scales to apply for a given font scale at a given
+/// breakpoint. Remember to add a scale named 'default' for every set. It is used if
+/// none of the media queries matches (mobile first).
+///
+/// NOTE: Every scale defined for a breakpoint will generate a media query. Thus redundant
+/// scales will generate redundant media queries.
 ///
 /// @example -> /demo
 
@@ -201,13 +204,13 @@ $sb-font-scale-map: (
       @if map-has-key(map-get(map-get($sb-font-scale-map, $font-set), $scale), $bp) {
         @return map-get(map-get(map-get($sb-font-scale-map, $font-set), $scale), $bp);
       } @else {
-        @warn 'breakpoint #{$bp} not found in $sb-font-scale-map.#{$font-set}.#{$scale}.'
+        @return false;
       }
     } @else {
-      @warn 'font-scale #{$scale} not found in $sb-font-scale-map.#{$font-set}.';
+      @warn 'font-scale `#{$scale}` not found in $sb-font-scale-map.#{$font-set}.';
     }
   } @else {
-    @warn 'font-set #{$font-set} not found in $sb-font-scale-map';
+    @warn 'font-set `#{$font-set}` not found in $sb-font-scale-map';
   }
 }
 
