@@ -1,8 +1,8 @@
-// sassbox 0.1.5 
+// sassbox 0.1.6 
 // https://github.com/ala-ch/sassbox.git
-// (c) 2015 - 2016 ala pixel LLC <http://ala.ch>
+// (c) 2015 - 2017 ala pixel LLC <http://ala.ch>
 // GPL-3.0
-// 28.07.2016 12:44
+// 25.03.2017 20:10
 
 // _helpers.scss
 //
@@ -123,6 +123,35 @@ $default-svg-repeat: no-repeat !default;
   background-size: $size;
   background-position: $position;
   background-repeat: $repeat;
+}
+
+// _links.scss
+//
+// Generic helpers and tools for dealing with links (a tag).
+// IMPORTANT: Do not output any CSS in this file
+
+
+/// Paints all states of a link in the color passed as argument. 
+///
+/// @param {string} $color - color used for text links
+
+@mixin link-colors($color) {
+  color: $color;
+  &:link {
+    color: $color;
+  }
+  &:visited {
+    color: $color;
+  }
+  &:hover {
+    color: $color;
+  }
+  &:focus {
+    color: $color;
+  }
+  &:active {
+    color: $color;
+  }
 }
 
 // _responsive-typography.scss

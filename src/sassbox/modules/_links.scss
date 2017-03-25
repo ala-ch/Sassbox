@@ -1,0 +1,28 @@
+// _links.scss
+//
+// Generic helpers and tools for dealing with links (a tag).
+// IMPORTANT: Do not output any CSS in this file
+
+
+/// Paints all states of a link in the color passed as argument. 
+///
+/// @param {string} $color - color used for text links
+
+@mixin link-colors($color) {
+  color: $color;
+  &:link {
+    color: $color;
+  }
+  &:visited {
+    color: $color;
+  }
+  &:hover {
+    color: $color;
+  }
+  &:focus {
+    color: $color;
+  }
+  &:active {
+    color: $color;
+  }
+}
