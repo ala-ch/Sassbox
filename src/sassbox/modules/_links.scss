@@ -4,25 +4,58 @@
 // IMPORTANT: Do not output any CSS in this file
 
 
-/// Paints all states of a link in the color passed as argument. 
+/// Paints all states of a link in the color passed in argument $color. Colors
+/// for the pseudo classes (ie. :hover) are optional. 
 ///
-/// @param {string} $color - color used for text links
+/// @param {color} $color - default color used for text links
+/// @param {color} $link [null] - color used for pseudo class :link
+/// @param {color} $visited [null] - color used for pseudo class :visited
+/// @param {color} $hover [null] - color used for pseudo class :hover
+/// @param {color} $focus [null] - color used for pseudo class :focus
+/// @param {color} $active [null] - color used for pseudo class :active
 
-@mixin link-colors($color) {
+@mixin link-colors(
+  $color,
+  $link: null,
+  $visited: null,
+  $hover: null,
+  $focus: null,
+  $active: null
+) {
   color: $color;
   &:link {
-    color: $color;
+    @if ($link) {
+      color: $link;
+    } @else {
+      color: $color;
+    }
   }
   &:visited {
-    color: $color;
+    @if ($visited) {
+      color: $visited;
+    } @else {
+      color: $color;
+    }
   }
   &:hover {
-    color: $color;
+    @if ($hover) {
+      color: $hover;
+    } @else {
+      color: $color;
+    }
   }
   &:focus {
-    color: $color;
+    @if ($focus) {
+      color: $focus;
+    } @else {
+      color: $color;
+    }
   }
   &:active {
-    color: $color;
+    @if ($active) {
+      color: $active;
+    } @else {
+      color: $color;
+    }
   }
 }

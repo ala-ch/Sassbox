@@ -2,3 +2,14 @@
 .link-colors {
   @include link-colors(ForestGreen);
 }
+
+.link-colors-states {
+  @include link-colors(
+    ForestGreen,
+    $link: #2ECCFA,
+    $visited: #FAAC58,
+    $hover: #FA58AC,
+    $focus: #74DF00,
+    $active: #FFFF00
+  );
+}
